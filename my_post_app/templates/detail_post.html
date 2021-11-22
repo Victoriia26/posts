@@ -8,11 +8,16 @@
     <title>Document</title>
 </head>
 <body>
+<a href="{% url 'delete' post.pk%}">Delete</a>
 <ul>
     <li>{{post.name}}</li>
     <li>{{post.description}}</li>
     <li>{{post.created_date}}</li>
-    <li>{{post.hashtag.all}}</li>
+    <li>
+        {%for hash in post.hashtag.all%}
+        {{hash}}
+        {%endfor%}
+    </li>
     {%for image in post.post_image.all%}
         <li><img src="{{image}}"></li>
     {%endfor%}

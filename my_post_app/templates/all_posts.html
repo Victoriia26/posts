@@ -12,7 +12,7 @@
     <tr>
       <th scope="col">№</th>
       <th scope="col">Название</th>
-      <th scope="col">Опсание</th>
+      <th scope="col">Описание</th>
       <th scope="col">Дата создания</th>
       <th scope="col">Hashtag</th>
       <th scope="col">Картинка</th>
@@ -25,10 +25,14 @@
       <td><a href="{%url 'detail' post.id%}">{{post.name}}</a></td>
       <td>{{post.description}}</td>
       <td>{{post.created_date}}</td>
-      <td>{{post.hashtag.all}}</td>
+      <td>
+      {%for hash in post.hashtag.all%}
+      {{hash}}
+      {%endfor%}
+      </td>
       <td><img src="{{post.post_image.first}}" height="150" width="150"></td>
     </tr>
-  {% endfor%}
+  {%endfor%}
   </tbody>
 </table>
 
